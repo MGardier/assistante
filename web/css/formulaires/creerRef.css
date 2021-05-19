@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+label{
+    display: block;
+    width: 200px;
+    float:left;
+    color: black;
+    font-family: "Poppins";
+}
+.formulaire {
+    width: 600px;
+    margin: 5% auto auto;
+    background-color: #fafafa;
+    padding: 40px 0 60px 40px;
+    box-shadow: 10px -5px 5px rgb(160, 160, 160);
+    border-radius: 5px;
+}
+.boutton-enregistrer button{
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+    float:left;
+    margin-right: 20px;
+}
+
+.boutton-suivant{
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+    float:right;
+    margin-right: 20px;
+}
+.list-ref{
+    background-color: white ;
+    width: 650px;
+    margin:auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 40px;
+    box-shadow: 10px -5px 5px rgb(160, 160, 160);
+    border-radius: 5px;
+    color : black;
+    font-family: "Poppins";
+
+}
+.list-ref p {
+    margin:0;
+}

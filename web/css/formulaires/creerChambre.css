@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+label{
+    display: block;
+    width: 200px;
+    float:left;
+    color: black;
+    font-family: "Poppins";
+}
+.formulaire {
+    width: 700px;
+    margin: 5% auto auto;
+    background-color: #fafafa;
+    padding: 40px 0 60px 40px;
+    box-shadow: 10px -5px 5px rgb(160, 160, 160);
+    border-radius: 5px;
+}
+#appbundle_chambre_dateEntrer_date_month{
+    width:130px;
+}
+#appbundle_chambre_dateSortie_date_month{
+    width: 130px;
+}
+input{
+    margin-left: 2px;
+    width : 242px;
+}
+select {
+    /*border-radius: 5px;*/
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 5px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid #6f6f6f;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+#appbundle_chambre_Suivant,#appbundle_piecejointe_Enregistrer{
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+    float:right;
+    margin-right: 20px;
+}
+#appbundle_chambre_dateEntrer_time{
+    color : black;
+    margin-left: 200px;
+    margin-top: 4px;
+}
+#appbundle_chambre_dateSortie_time{
+    color: black;
+    margin-left: 200px;
+    margin-top: 4px;
+}
+#appbundle_chambre_Enregistrer{
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+    float:left;
+    margin-right: 20px;
+}
+
+.boutton-suivant{
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+    float:right;
+    margin-right: 20px;
+}

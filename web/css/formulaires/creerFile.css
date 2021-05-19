@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+.formulaire {
+    min-width: 600px;
+    margin: 5% auto auto;
+    background-color: #fafafa;
+    padding: 40px 0 60px 40px;
+    box-shadow: 10px -5px 5px rgb(160, 160, 160);
+    border-radius: 5px;
+}
+/*label{*/
+    /*display: block;*/
+    /*width: 200px;*/
+    /*float:left;*/
+    /*color: black;*/
+    /*font-family: "Poppins";*/
+/*}*/
+.centrage{
+    margin-left: 150px;
+}
+#appbundle_piecejointe_Enregistrer, .button{
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+    float:left;
+    margin-right: 20px;
+}
+
+.button{
+    float: right;
+}
+.file-saved{
+    background-color: white ;
+    width: 650px;
+    margin:auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 40px;
+    box-shadow: 10px -5px 5px rgb(160, 160, 160);
+    border-radius: 5px;
+    color : black;
+    font-family: "Poppins";
+}
+h2{
+    margin-top: 30px;
+    text-align: center;
+}
+p{
+    text-align: center;
+}
+.bold{
+    font-weight: bold;
+}

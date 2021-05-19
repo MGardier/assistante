@@ -1,0 +1,50 @@
+.info-patient{
+    background-color: #FFFFFF;
+    width: 75%;
+    margin:auto;
+    padding-bottom: 20px;
+    padding-top: 15px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px #777777;
+}
+.info-patient>h2 {
+    margin-top: 0;
+}
+.b{
+    margin: auto;
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+}
+.b-margin{
+    margin-top: 40px;
+}.b-bottom-margin{
+    margin-bottom: 40px;
+}
+p{
+    color : #1F2739;
+    font-size:16px;
+}
+.h2-space{
+    margin-top:40px;
+    margin-bottom: 40px;
+}
+/*Contenu note */
+.info-note{
+    background-color: #FFFFFF;
+    width: 70%;
+    padding: 15px 2.5% 20px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px #777777;
+    word-wrap: break-word;
+    margin: auto auto 40px;
+}
+.label{
+    float: left;
+}
+.label-date{
+    float: right;
+}

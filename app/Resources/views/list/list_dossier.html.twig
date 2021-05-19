@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+<div class="centrer">
+        <input class= "search2" id="search" type="text"  placeholder="exemple: Nom ou Prénom ou Date de Naissance, puis appuyer sur Entrée">
+
+
+                {% if patientCollection is not null %}
+        <table class="container" cellspacing="0" cellpadding="0" id="tab_list">
+            <thead>
+            <tr>
+                <th>Numéro du dossier</th>
+                <th>Date de création</th>
+                <th>Nom du patient</th>
+                <th>Prénom du patient</th>
+                <th>Ouvrir</th>
+                <th>Imprimer</th>
+                <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for patient in patientCollection %}
+                {% if patient.dossier.id is defined %}
+                    <tr>
+                        <td data-dossier {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}>{{ patient.dossier.id }}</td>
+                        <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}>{{ patient.dossier.dateCreation|date('d-m-Y') }} à {{ patient.dossier.dateCreation|date('H') }}h{{   patient.dossier.dateCreation|date('i') }}</td>
+                        <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}>{{ patient.nom }} </td>
+                        <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}>{{ patient.prenom }}</td>
+                        <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %} onclick="location.href='{{ path('open_dossier', {'id':patient.id}) }}'"> Ouvrir</td>
+                        <td><a data-boutonImprimer href='{{ path('imprimer', {'id':patient.dossier.id}) }}'>Imprimer</a></td>
+                        <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}><a data-boutonSupprimer
+                               href='{{ path('delete_dossier', {'id':patient.dossier.id}) }}'
+                               class="red" style="font-weight:bold">Supprimer
+                            </a></td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock body %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/imprimer.js') }}"></script>
+    <script src="{{ asset('js/delete.js') }}"></script>
+    <script src="{{ asset('js/search.js') }}"></script>
+
+
+{% endblock %}

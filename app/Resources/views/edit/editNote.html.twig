@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/formulaires/creerNote.css') }}">
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="formulaire">
+            <h1>Modification de la note</h1>
+            {{ form_start(form) }}
+            <div class="form-group">{{ form_row(form.contenu) }}</div>
+            <button class="b" type="submit">Enregistrer</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock body %}

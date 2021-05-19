@@ -1,0 +1,60 @@
+{#{% if error %}#}
+    {#{% if form_errors(form.username) %}#}
+        {#<p class="errorId">L'identifiant n'est pas valide </p>#}
+
+{#{% else %}#}
+    {#{% if form_errors(form.password) %}#}
+        {#<p class="errorId">Le mot de passe n'est pas valide </p>#}
+
+{#{% else %}#}
+{#<p>Un probléme est survenue </p>#}
+{#{% endif %}#}
+{#{% endif %}#}
+{#{% endif %}#}
+
+
+ {% block stylesheets %}
+
+     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+ {% endblock %}
+
+<div class="signupSection">
+
+    <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i>
+    <form action="{{ path('login') }}" method="POST" class="signupForm" name="signupform">
+
+        <h2 class="h2">Connectez-vous</h2>
+        <ul class="noBullet">
+            <li>
+                <label for="username"></label>
+                <input type="text" class="inputFields ecraser_comme_jamais" id="username" name="_username"
+                       placeholder="Identifiant" value="{{ last_username }}"/>
+            </li>
+            <li>
+                <label for="password"></label>
+                <input type="password" class="inputFields" id="password" name="_password" placeholder="Mot de Passe"
+                       value=""/>
+            </li>
+            {#{% if error != null %}#}
+            {#{{ error.message }}#}
+            {#{% endif %}#}
+            {#<li></li>#}
+
+            {# Champ cache du Jeton Csrf #}
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}">
+
+            <li id="center-btn">
+                <input type="submit" id="join-btn" name="join" alt="Join" value="Valider">
+            </li>
+        </ul>
+
+    </form>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/formulaires/creerFile.css') }}">
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <h1>Ajouter un nouveau fichier</h1>
+    <div class="container">
+        <div class="formulaire">
+            {{ form_start(form) }}
+            <div class="form-group centrage">{{ form_row(form.fichier) }}</div>
+            {{ form_end(form) }}
+            <a href="{{ path('open_dossier', {'id':patient.id}) }}">
+                <button class="button">Terminer</button>
+            </a>
+        </div>
+        <h2>Fichiers enregistrés pour ce dossier</h2>
+        {% if fileCollection|length > 0  %}
+        <div class="file-saved">
+            {% for file in fileCollection %}
+                <p><span class="bold">Nom du fichier</span> : {{ file.oldName }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+{% endblock body %}

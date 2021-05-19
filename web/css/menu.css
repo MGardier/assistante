@@ -1,0 +1,36 @@
+nav {
+    position: relative;
+    width: 100%;
+    height: 50px !important;
+    background-color: #323C50;
+    font-size: 0;
+    margin-bottom:20px !important;
+    padding-bottom: 10px !important;
+}
+nav a {
+    line-height: 50px;
+    height: 100%;
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+nav a:hover{
+    color: white;
+}
+nav a:nth-child(1) {
+    width: 120px;
+}
+nav a:nth-child(2) {
+    width: 120px;
+}
+nav a:nth-child(3) {
+    width: 120px;
+}
+
+

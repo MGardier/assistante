@@ -1,0 +1,33 @@
+
+
+
+        <thead>
+        <tr>
+            <th>Numéro du dossier</th>
+            <th>Date de création</th>
+            <th>Nom du patient</th>
+            <th>Prénom du patient</th>
+            <th>Ouvrir</th>
+            <th>Imprimer</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        {% for patient in patientCollection %}
+            {% if patient.dossier.id is defined %}
+
+                <tr>
+                    <td data-dossier {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}>{{ patient.dossier.id }}</td>
+                    <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}>{{ patient.dossier.dateCreation|date('d-m-Y') }} à {{ patient.dossier.dateCreation|date('H') }}h{{   patient.dossier.dateCreation|date('i') }}</td>
+                    <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}>{{ patient.nom }} </td>
+                    <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}>{{ patient.prenom }}</td>
+                    <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %} onclick="location.href='{{ path('open_dossier', {'id':patient.id}) }}'"> Ouvrir</td>
+                    <td><a data-boutonImprimer href="">Imprimer</a></td>
+                    <td {% if patient.genre == false %}class="blue"{% else %} class="pink"{% endif %}><a data-boutonSupprimer
+                                                                                                         href='{{ path('delete_dossier', {'id':patient.dossier.id}) }}'
+                                                                                                         class="red" style="font-weight:bold">Supprimer
+                        </a></td>
+                </tr>
+                {% else %}
+                <p>Ifegregregre</p>
+    {% endif %}
+{% endfor %}

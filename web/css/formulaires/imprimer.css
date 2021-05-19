@@ -1,0 +1,97 @@
+
+.info-patient{
+  float: left;
+
+
+
+}.info-patient2{
+    float: right;
+
+
+
+
+}
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        line-height: 1.42em;
+        color: #185875;
+        background-color: #eceef5;
+        text-align:center;
+
+    }
+
+    table {
+        color: #DAA520;
+        height: 15%;
+        box-shadow: 10px 15px 5px #474747;
+    }
+
+    td, th {
+        border: ridge 1px #838383;
+    }
+
+    .container th h1 {
+        font-weight: bold;
+        font-size: 1em;
+        text-align: left;
+        color: #185875;
+    }
+
+    .container td {
+        font-weight: normal;
+        font-size: 1em;
+        -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+        -moz-box-shadow: 0 2px 2px -2px #0E1119;
+        box-shadow: 0 2px 2px -2px #0E1119;
+    }
+
+    .container {
+        text-align: left;
+        overflow: hidden;
+        width: 60%;
+        margin: 0 auto;
+        display: table;
+        padding: 0 0 0 0;
+    }
+
+    .container td, .container th {
+        padding-bottom: 1%;
+        padding-top: 1%;
+        padding-left: 1%;
+        padding-right: 1%;
+
+        text-align: center;
+    }
+
+    /* Background-color of the odd rows */
+    .container tr:nth-child(odd) {
+        background-color: #323C50;
+    }
+
+    /* Background-color of the even rows */
+    .container tr:nth-child(even) {
+        background-color: #2C3446;
+    }
+
+    .container th {
+        background-color: #1F2739;
+    }
+
+
+    .red {
+        text-decoration: none;
+        color: rgb(225, 0, 7);
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+    td a {
+        text-decoration: none;
+        display: block;
+        color: goldenrod;
+        margin: auto;
+    }
+
+

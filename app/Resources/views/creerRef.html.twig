@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/formulaires/creerRef.css') }}">
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <h1>Création d'un référent familial pour le patient : {{ patient.nom }} {{ patient.prenom }}</h1>
+    <div class="container">
+        <div class="formulaire">
+    {{ form_start(form) }}
+            <div class="form-group">{{ form_row(form.lieu) }}</div>
+            <div class="form-group">{{ form_row(form.nom) }}</div>
+            <div class="form-group">{{ form_row(form.prenom) }}</div>
+            <div class="form-group">{{ form_row(form.adresse) }}</div>
+            <div class="form-group">{{ form_row(form.fixe) }}</div>
+            <div class="form-group">{{ form_row(form.portable) }}</div>
+            <div class="form-group">{{ form_row(form.mail) }}</div>
+            <div class="boutton-enregistrer">{{ form_row(form.Enregistrer) }}</div>
+    {{ form_end(form) }}
+    <a href="{{ path('fichier',{'id':patient.id}) }}">
+        <button class="boutton-suivant">Suivant</button>
+    </a>
+        </div>
+    </div>
+    <h2>Référents enregistrés pour ce dossier</h2>
+    {% for ref in referentCollection %}
+        <div class="list-ref">
+                <p>Lieu : {{ ref.lieu }}</p>
+                <p>Prénom : {{ ref.prenom }}</p>
+                <p>Nom : {{ ref.nom }}</p>
+                <p>Adresse : {{ ref.adresse }}</p>
+                <p>Fixe : {{ ref.fixe }}</p>
+                <p>Portable : {{ ref.portable }}</p>
+                <p>E-mail : {{ ref.portable }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/create/ref_list.js') }}"></script>
+{% endblock javascripts %}

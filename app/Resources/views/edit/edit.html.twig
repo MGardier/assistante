@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/formulaires/creer.css') }}">
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="formulaire">
+            {{ form_start(form) }}
+            <div class="form-group">{{ form_row(form.nom) }}</div>
+            <div class="form-group">{{ form_row(form.prenom) }}</div>
+            <div class="form-group">{{ form_row(form.dateNaissance) }}</div>
+            <div class="form-group">{{ form_row(form.genre) }}</div>
+            <div class="form-group">{{ form_row(form.adresse) }}</div>
+            <div class="form-group">{{ form_row(form.fixe) }}</div>
+            <div class="form-group">{{ form_row(form.portable) }}</div>
+            <div class="form-group">{{ form_row(form.mail) }}</div>
+            <div class="form-group">{{ form_row(form.situationFamiliale) }}</div>
+            <div class="form-group">{{ form_row(form.situationPro) }}</div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock body %}
+

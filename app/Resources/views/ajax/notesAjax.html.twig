@@ -1,0 +1,20 @@
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/list.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/info-patient.css') }}">
+{% endblock %}
+{% if noteCollection|length >0 %}
+<h1>Notes du dossier n°{{ noteCollection[0].dossier.id }}</h1>
+    {% for note in noteCollection %}
+        <div class="info-note">
+            <p class="label-date">Date de création: {{ note.date|date('d-m-Y') }} à {{ note.date|date('H') }}
+                h{{ note.date|date('i') }}</p>
+            <p class="label">Auteur : {{ note.auteur }}</p>
+            <br>
+            <br>
+            <p>{{ note.contenu }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Il n'y a aucune note </p>
+{% endif %}

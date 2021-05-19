@@ -1,0 +1,219 @@
+{% extends ('base.html.twig') %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/info-patient.css') }}">
+{% endblock %}
+{% block body %}
+    <h1 id="idDossier">Dossier n°{{ dossier.id }}</h1>
+    <p>Date de création: {{ dossier.dateCreation|date('d-m-Y') }} à {{ dossier.dateCreation|date('G') }}
+        h{{ dossier.dateCreation|date('i') }} par {{ dossier.auteur }}</p>
+
+    <button class="b b-bottom-margin" id="btn" href='{{ path('imprimer',{'id':patient.id}) }}'>Imprimer</button>
+    <div class="info-patient">
+        <h2>Informations du patient</h2>
+        <p>Nom : {{ patient.nom }}</p>
+        <p>Prénom : {{ patient.prenom }}</p>
+        <p>Date de naissance : {{ patient.dateNaissance|date('d-m-Y') }}</p>
+        <p>Genre:
+            {% if patient.genre == false %}
+            Masculin</p>
+        {% else %}
+            Féminin </p>
+        {% endif %}
+        {% if age is not null %}
+        <p>Âge : {{ age }} ans</p>
+        {% else %}
+            <p>Non renseigné</p>
+        {% endif %}
+        <p>Adresse :
+        {% if patient.adresse is not null %}
+ {{ patient.adresse }}</p>
+        {% else %}Non renseignée</p>
+        {% endif %}
+        <p>Numéro de portable :
+            {% if patient.portable is not null %}
+{{ patient.portable }}</p>
+        {% else %}
+            Non renseigné</p>
+        {% endif %}
+        <p>Numéro fixe :
+            {% if patient.fixe is not null %}
+            {{ patient.fixe }}</p>
+        {% else %}
+            Non renseigné</p>
+        {% endif %}
+        <p>E-mail :
+        {% if patient.mail %}
+{{ patient.mail }}</p>
+            {% else %}
+                Non renseigné</p>
+        {% endif %}
+
+        <p>Situation professionnelle :
+            {% if patient.situationPro is not null %}
+            {{ patient.situationPro }}</p>
+            {% else %}
+            Non renseignée</p>
+            {% endif %}<p>Situation familiale :
+            {% if patient.situationFamiliale is not null %}
+            {{ patient.situationFamiliale }}</p>
+            {% else %}
+            Non renseignée</p>
+            {% endif %}
+        <button class="b" onclick="location.href='{{ path('edit_dossier_patient',{'id':patient.id}) }}'">Modifier
+        </button>
+    </div>
+    <h2 class="h2-space">Référents familiaux</h2>
+    {% if patient.referentFamilialCollection|length > 0 %}
+        <table class="container" cellpadding="0" cellspacing="0" style="width: 85%">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Lieu</th>
+                <th>Adresse</th>
+                <th>Portable</th>
+                <th>Fixe</th>
+                <th style="min-width: 120px;">E-mail</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for refFamilial in patient.referentFamilialCollection %}
+
+                <input id="ref" name="prodId" type="hidden" value="{{ refFamilial.id }}">
+                <td style="word-wrap: break-word; min-width: 150px">{{ refFamilial.nom }}</td>
+                <td style="min-width: 150px">{{ refFamilial.prenom }}</td>
+                <td style="min-width: 150px">{{ refFamilial.lieu }}</td>
+                <td style="min-width: 150px">{{ refFamilial.adresse }}</td>
+                <td style="min-width: 150px">{{ refFamilial.portable }}</td>
+                <td style="min-width: 150px">{{ refFamilial.fixe }}</td>
+                <td style="max-width: 150px; word-wrap: break-word;   ">{{ refFamilial.mail }}</td>
+                <td onclick="location.href='{{ path('editRef',{'id':refFamilial.id}) }}'" style="min-width: 100px">
+                    Modifier
+                </td>
+                <td style="min-width: 120px"><a data-boutonSupprimer2 class="red"
+                                                href="">Supprimer</a>
+                </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucun référent familial relié à ce dossier</p>
+    {% endif %}
+    <button class="b b-margin" onclick="location.href='{{ path('add_ref',{'id':patient.id}) }}'">Ajouter</button>
+
+    <h2 class="h2-space">Chambres occupées</h2>
+    {% if patient.chambreCollection|length > 0 %}
+        <table class="container" cellpadding="0" cellspacing="0" style="width: 85%">
+            <thead>
+            <tr>
+                <th>Service</th>
+                <th>Numéro de chambre</th>
+                <th>Date d'entrée</th>
+                <th>Date de sortie</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for chambre in patient.chambreCollection %}
+                <tr>
+                    <input id="chambre" name="prodId" type="hidden" value="{{ chambre.id }}">
+                    <td>{{ chambre.service }}</td>
+                    <td>{{ chambre.numero }}</td>
+                    <td>{{ chambre.dateEntrer|date('d-m-Y') }} à {{ chambre.dateEntrer|date('H') }}
+                        h{{ chambre.dateEntrer|date('i') }}</td>
+                    <td>{{ chambre.dateSortie|date('d-m-Y') }} à {{ chambre.dateSortie|date('H') }}
+                        h{{ chambre.dateSortie|date('i') }}</td>
+                    <td onclick="location.href='{{ path('editChambre',{'id':chambre.id}) }}'" style="min-width: 120px">
+                        Modifier
+                    </td>
+                    <td style="min-width: 120px"><a data-boutonSupprimer3 class="red"
+                                                    href="">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucune chambre enregistrée pour ce patient</p>
+    {% endif %}
+    <button class="b b-margin" onclick="location.href='{{ path('add_chambre',{'id':patient.id}) }}'">Ajouter</button>
+
+    <h2 class="h2-space">Pièces jointes</h2>
+    {% if dossier.PIeceJointeCollection|length > 0 %}
+        <table class="container" cellpadding="0" cellspacing="0" style="width: 85%">
+            <thead>
+            <tr>
+                <th>Nom du fichier</th>
+                <th>Modifier</th>
+                <th style="min-width: 120px;">Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for pieceJointe in dossier.PieceJointeCollection %}
+                <tr>
+                    <input id="piece" name="prodId" type="hidden" value="{{ pieceJointe.id }}">
+                    <td><a href="{{ path('decryptFile', {'id':pieceJointe.id}) }}"
+                           style="  word-wrap: break-word;   ">{{ pieceJointe.oldName }}</a>
+                    </td>
+                    <td onclick="location.href='{{ path('editPiece',{'id':pieceJointe.id}) }}'"
+                        style="min-width: 120px">
+                        Modifier
+                    </td>
+                    <td style="min-width: 120px; word-wrap: break-word"><a data-boutonSupprimer4 class="red" href="">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucune pièce jointe reliée à ce dossier</p>
+    {% endif %}
+    <button class="b b-margin" onclick="location.href='{{ path('add_file',{'id':patient.id}) }}'">Ajouter</button>
+
+    <h2 class="h2-space">Notes</h2>
+    <form>
+        <select id="select-list-date" class="form-control">
+        </select>
+    </form>
+    {#{% if dossier.noteCollection|length > 0 %}#}
+    <div id="notes">
+        {#% for note in dossier.noteCollection %}#}
+        {#<div class="info-note">#}
+        {#<p class="label-date">Date de création: {{ note.date|date('d-m-Y') }} à {{ note.date|date('H') }}#}
+        {#h{{ note.date|date('i') }}</p>#}
+        {#<p class="label">Auteur : {{ note.auteur }}</p>#}
+        {#<br>#}
+        {#<br>#}
+        {#<p>{{ note.contenu }}</p>#}
+        {#<button class="b" onclick="location.href='{{ path('editNote',{'id':note.id}) }}'">Modifier</button>#}
+        {#<button class="b" onclick="location.href='{{ path('delete_note',{'id':note.id}) }}'">Supprimer</button>#}
+        {#</div>#}
+        {#{% endfor %}#}
+        <p>Séléctionnez une date pour afficher les notes relatives à celle-ci</p>
+    </div>
+    {#{% else %}#}
+    {#<p>Il n'y a aucune note pour ce dossier</p>#}
+    {#{% endif %}#}
+    <button class="b b-margin" onclick="location.href='{{ path('create_note',{'id':patient.dossier.id}) }}'">Ajouter
+    </button>
+    <button class="b b-bottom-margin" id="btn2" href=''>Imprimer</button>
+
+
+{% endblock body %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <script src="{{ asset('js/list-date.js') }}"></script>
+    <script src="{{ asset('js/delete1.js') }}"></script>
+    <script src="{{ asset('js/delete2.js') }}"></script>
+    <script src="{{ asset('js/delete3.js') }}"></script>
+
+    <script src="{{ asset('js/imprimer2.js') }}"></script>
+    <script src="{{ asset('js/imprimer3.js') }}"></script>
+{% endblock javascripts %}

@@ -1,0 +1,118 @@
+
+{% block stylesheets %}
+
+
+    <link  rel="stylesheet" href="{{ asset('css/formulaires/imprimer.css') }}">
+{% endblock %}
+{% block body %}
+
+
+    <h1>Dossier n°{{ dossier.id }}</h1>
+    <p>Date de création: {{ dossier.dateCreation|date('d-m-Y') }} à {{ dossier.dateCreation|date('G') }}
+        h{{ dossier.dateCreation|date('i') }}</p>
+    <h2>Informations du patient</h2>
+    <div class="info-patient">
+
+        <p>Nom : {{ patient.nom }}</p>
+        <p>Prénom : {{ patient.prenom }}</p>
+        <p>Date de naissance : {{ patient.dateNaissance|date('d-m-Y') }}</p>
+        <p>Âge : {{ age }} ans</p>
+        </div>
+    <div class="info-patient2">
+
+        <p>Adresse : {{ patient.adresse }}</p>
+        <p>Numéro de portable : {{ patient.portable }}</p>
+        <p>Numéro fixe : {{ patient.fixe }}</p>
+        <p>E-mail : {{ patient.mail }}</p>
+    </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    <h2 class="h2-space">Référents familaux</h2>
+    {% if patient.referentFamilialCollection|length > 0 %}
+        <table class="container" cellpadding="0" cellspacing="0" style="width: 100%">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Lieu</th>
+                <th>Adresse</th>
+                <th>Portable</th>
+                <th>Fixe</th>
+                <th>E-mail</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for refFamilial in patient.referentFamilialCollection %}
+                <tr>
+                    <td style="word-wrap: break-word; min-width: 100px">{{ refFamilial.nom }}</td>
+                    <td style="min-width: 100px">{{ refFamilial.prenom }}</td>
+                    <td style="min-width: 100px">{{ refFamilial.lieu }}</td>
+                    <td style="min-width: 100px">{{ refFamilial.adresse }}</td>
+                    <td style="min-width: 100px">{{ refFamilial.portable }}</td>
+                    <td style="min-width: 100px">{{ refFamilial.fixe }}</td>
+                    <td style="max-width: 100px; word-wrap: break-word;   ">{{ refFamilial.mail }}</td>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucun référent familial relié à ce dossier</p>
+    {% endif %}
+
+    <h2 class="h2-space">Chambres occupées</h2>
+    {% if patient.chambreCollection|length > 0 %}
+        <table class="container" cellpadding="0" cellspacing="0" style="width: 80%">
+            <thead>
+            <tr>
+                <th>Numéro de chambre</th>
+                <th>Date d'entrée</th>
+                <th>Date de sortie</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for chambre in patient.chambreCollection %}
+                <tr>
+                    <td>{{ chambre.numero }}</td>
+                    <td>{{ chambre.dateEntrer|date('d-m-Y') }} à {{ chambre.dateEntrer|date('H') }}
+                        h{{ chambre.dateEntrer|date('i') }}</td>
+                    <td>{{ chambre.dateSortie|date('d-m-Y') }} à {{ chambre.dateSortie|date('H') }}
+                        h{{ chambre.dateSortie|date('i') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucune chambre reliée pour ce patient</p>
+    {% endif %}
+    <h2 class="h2-space">Pièces jointes</h2>
+    {% if dossier.PIeceJointeCollection|length > 0 %}
+        <table class="container" cellpadding="0" cellspacing="0" style="width: 60%">
+            <thead>
+            <tr>
+                <th>Nom du fichier</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for pieceJointe in dossier.PieceJointeCollection %}
+                <tr>
+                    <td><a href="{{ asset('uploads/files/user/') }}{{ pieceJointe.fichier }}"
+                           style="  word-wrap: break-word;   ">{{ pieceJointe.oldName }}</a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Il n'y a aucune pièce jointe reliée à ce dossier</p>
+    {% endif %}
+{% endblock body %}

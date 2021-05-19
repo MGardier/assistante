@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+label{
+    display: block;
+    width: 300px;
+    float:left;
+    color: black;
+    font-family: "Poppins";
+    margin-right: 15px;
+}
+.formulaire {
+    width: 650px;
+    margin: 5% auto auto;
+    background-color: #fafafa;
+    padding: 40px 0 200px 40px;
+    box-shadow: 10px -5px 5px rgb(160, 160, 160);
+    border-radius: 5px;
+}
+#appbundle_patient_Suivant {
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+    float:right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+#appbundle_patient_dateNaissance_month{
+    width: 100px;
+}
+
+#appbundle_patient_Enregistrer{
+    border-radius:  10px;
+    box-shadow: 0 0 0;
+    color: #d7d7d7;
+    background-color:#1F2739;
+    padding: 8px 45px;
+    font-size: 16px;
+    float:right;
+    margin-right: 20px;
+}
+h1{
+    text-align: center;
+}

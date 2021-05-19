@@ -1,0 +1,20 @@
+
+
+{% if noteCollection|length >0 %}
+
+{% for note in noteCollection %}
+        <div class="info-note">
+            <input id="NOTE" name="prodId" type="hidden" value="{{ note.id }}">
+            <p class="label-date">Date de création: {{ note.date|date('d-m-Y') }} à {{ note.date|date('H') }}
+                h{{ note.date|date('i') }}</p>
+            <p class="label">Auteur : {{ note.auteur }}</p>
+            <br>
+            <br>
+            <p>{{ note.contenu }}</p>
+            <button class="b" onclick="location.href='{{ path('editNote',{'id':note.id}) }}'">Modifier</button>
+            <button id="e" data-boutonSupprimer5 class="b" href="">Supprimer</button>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Aucune note pour cette année</p>
+{% endif %}

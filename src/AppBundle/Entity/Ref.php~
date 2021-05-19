@@ -1,0 +1,73 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Ref
+ *
+ * @ORM\Table(name="ref")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RefRepository")
+ */
+class Ref
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu", type="string", length=255)
+     */
+    private $lieu;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="ReferentFamilialCollection")
+     */
+    private $Patient;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return Ref
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+}
+
